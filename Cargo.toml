@@ -1,5 +1,5 @@
 [workspace]
 
 members = [
-    "macro_playground", "proc_macro_def"
+    "macro_playground", "composite_types"
 ]

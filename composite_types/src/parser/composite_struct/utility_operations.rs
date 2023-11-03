@@ -41,7 +41,6 @@ fn validate_one_param(params: AngleBracketedIdents) -> syn::Result<Ident> {
 #[cfg(test)]
 mod tests {
     use proc_macro2::Span;
-    use syn::parse::Parser;
     use super::*;
     use syn::{parse2, parse_quote};
 

@@ -10,6 +10,7 @@ use crate::parser::composite_struct::utility_operations::UtilityOperation;
 
 /// Macro specific syntax to represent type composition operations.
 pub struct CompositeStruct {
+    pub pub_token: Option<Token![pub]>,
     struct_token: Token![struct],
     pub name: Ident,
     assignment_token: Token![=],
@@ -20,6 +21,7 @@ pub struct CompositeStruct {
 impl Parse for CompositeStruct {
     fn parse(input: ParseStream) -> syn::Result<Self> {
         Ok(CompositeStruct {
+            pub_token: input.parse().ok(),
             struct_token: input.parse()?,
             name: input.parse()?,
             assignment_token: input.parse()?,
@@ -64,6 +66,7 @@ mod tests {
         let actual = parse2::<CompositeStruct>(input).unwrap();
 
         let expected = CompositeStruct {
+            pub_token: Some(Token![pub](Span::call_site())),
             struct_token: Token![struct](Span::call_site()),
             name: Ident::new("MyStruct", Span::call_site()),
             assignment_token: Token![=](Span::call_site()),
@@ -82,6 +85,7 @@ mod tests {
         let actual = parse2::<CompositeStruct>(input).unwrap();
 
         let expected = CompositeStruct {
+            pub_token: Some(Token![pub](Span::call_site())),
             struct_token: Token![struct](Span::call_site()),
             name: Ident::new("MyStruct", Span::call_site()),
             assignment_token: Token![=](Span::call_site()),
@@ -148,6 +152,7 @@ impl Debug for CompositeOperation {
 impl CompositeStruct {
     pub fn new(name: Ident, composite_operation: CompositeOperation) -> Self {
         CompositeStruct {
+            pub_token: None,
             struct_token: Token![struct](Span::call_site()),
             name,
             assignment_token: Token![=](Span::call_site()),
