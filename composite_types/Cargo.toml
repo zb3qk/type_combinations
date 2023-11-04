@@ -1,7 +1,19 @@
 [package]
-name = "proc_macro_def"
-version = "0.1.0"
+name = "composite_types"
+version = "0.1.1"
 edition = "2021"
+authors = [
+    "Zachary Bilmen <zb3qk@virginia.edu>",
+]
+repository = "https://github.com/zb3qk/type_combinations"
+documentation = "https://docs.rs/composite_types/"
+license = "MIT OR Apache-2.0"
+keywords = ["proc_macro", "typescript"]
+categories = ["data-structures"]
+description = "Compose type definitions in the style of typescript."
+readme = "../README.md"
+rust-version = "1.71.0"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
