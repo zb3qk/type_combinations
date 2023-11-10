@@ -31,8 +31,6 @@ pub fn process_input<'a>(input: TypeInput) -> Result<State> {
 }
 
 fn apply_structure(state: &mut State, assignment: &Ident, mut structure: ItemStruct) {
-    dbg!(assignment);
-    dbg!(structure.to_token_stream().to_string());
     structure.ident = assignment.clone();
     state.variables.insert(assignment.to_string(), structure.clone());
 }
@@ -62,7 +60,7 @@ mod tests {
     fn test_process_input() {
         let input = parse_quote! {
             struct MyStruct {
-                field1: Optional<Ident>
+                field1: Option<Ident>
             }
             struct MyStruct1 = Required(MyStruct);
             struct MyStruct2 = Required(MyStruct);
@@ -74,7 +72,7 @@ mod tests {
             variables: btreemap! {
                 "MyStruct".to_string() => parse_quote! {
                     struct MyStruct {
-                        field1: Optional<Ident>
+                        field1: Option<Ident>
                     }
                 },
                 "MyStruct1".to_string() => parse_quote! {

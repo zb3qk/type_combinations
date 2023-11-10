@@ -45,8 +45,8 @@ mod tests {
         };
 
         let expected: ItemStruct = parse_quote! {
-            struct Test {
-               field: Optional<FieldType>
+            struct TestOptional {
+               field: Option<FieldType>
             }
         };
 
@@ -60,13 +60,13 @@ mod tests {
     fn test_process_optional_with_optional() {
         let input: ItemStruct = parse_quote! {
             struct Test {
-               field: Optional<FieldType>
+               field: Option<FieldType>
             }
         };
 
         let expected: ItemStruct = parse_quote! {
             struct TestOptional {
-               field: Optional<FieldType>
+               field: Option<FieldType>
             }
         };
 
@@ -86,7 +86,7 @@ mod tests {
 
         let expected: ItemStruct = parse_quote! {
             struct TestOptional {
-               field: Optional<FieldType::Nested<'a, AnotherFieldType>>
+               field: Option<FieldType::Nested<'a, AnotherFieldType>>
             }
         };
 

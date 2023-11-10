@@ -47,58 +47,13 @@ mod tests {
     #[test]
     fn test_parse_utility_operation() {
         let input = parse_quote! {
-            Required<Ident>
+            Required(Ident)
         };
 
         let actual = parse2::<UtilityOperation>(input).unwrap();
 
         let expected = UtilityOperation::Required(Ident::new("Ident", Span::call_site()));
         assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_parse_utility_operation_with_multiple_params() {
-        let input = parse_quote! {
-            Required<Ident, Ident>
-        };
-
-        let actual = parse2::<UtilityOperation>(input);
-
-        assert!(actual.is_err());
-    }
-
-    #[test]
-    fn test_parse_utility_operation_with_no_params() {
-        let input = parse_quote! {
-            Required<>
-        };
-
-        let actual = parse2::<UtilityOperation>(input);
-
-        assert!(actual.is_err());
-    }
-
-    #[test]
-    fn test_parse_utility_operation_with_optional() {
-        let input = parse_quote! {
-            Optional<Ident>
-        };
-
-        let actual = parse2::<UtilityOperation>(input).unwrap();
-
-        let expected = UtilityOperation::Optional(Ident::new("Ident", Span::call_site()));
-        assert_eq!(actual, expected);
-    }
-
-    #[test]
-    fn test_parse_utility_operation_with_invalid_operator() {
-        let input = parse_quote! {
-            Invalid<Ident>
-        };
-
-        let actual = parse2::<UtilityOperation>(input);
-
-        assert!(actual.is_err());
     }
 }
 

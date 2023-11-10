@@ -12,7 +12,7 @@ use crate::processor::process_input;
 /// Compose types from other types in Rust similar to [Typescript](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html)!
 /// Here is a quick example!
 /// ```rust
-/// # use proc_macro_def::{compose_type};
+/// # use composite_types::{compose_type};
 /// struct FieldType {}
 ///
 /// compose_type! {
@@ -43,7 +43,8 @@ use crate::processor::process_input;
 /// You can rename types within the scope of the macro invocation. This can be useful when you
 /// want to rename the type based on context.
 /// ```rust
-/// # use proc_macro_def::{compose_type};
+/// # use composite_types::{compose_type};
+/// struct FieldType {}
 /// compose_type! {
 ///
 ///     struct Example {
@@ -61,7 +62,7 @@ use crate::processor::process_input;
 /// ### Optional
 /// You can wrap a type in `Option` by using the `Optional` type function.
 /// ```rust
-/// # use proc_macro_def::{compose_type};
+/// # use composite_types::{compose_type};
 /// struct FieldType {}
 /// compose_type! {
 ///    struct Example {
@@ -79,7 +80,7 @@ use crate::processor::process_input;
 /// ### Required
 /// You can unwrap a type from `Option` by using the `Required` type function.
 /// ```rust
-/// # use proc_macro_def::{compose_type};
+/// # use composite_types::{compose_type};
 /// struct FieldType {}
 /// compose_type! {
 ///   struct Example {

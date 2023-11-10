@@ -12,7 +12,6 @@ pub fn process_type_alias(state: &mut State, alias: &Ident, composite: &Ident) -
     }
 }
 
-
 // unit tests
 #[cfg(test)]
 mod tests {

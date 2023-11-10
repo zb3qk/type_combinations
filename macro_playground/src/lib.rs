@@ -1,4 +1,4 @@
-use proc_macro_def::{compose_type};
+use composite_types::{compose_type};
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
