@@ -69,7 +69,7 @@ struct SavingsAccount {
 
 Whether we choose (1) or (2) is based on the specification of our banking app. Let's add a `Transaction` trait. 
 
-```
+```rust
 trait Transaction {
     fn transact(&mut self, other: dyn Transaction);
 }
@@ -77,7 +77,7 @@ trait Transaction {
 
 If a transaction is implemented differently between `CheckingAccount` and  `SavingsAccount`, using `compose_type!` makes sense since implementation is decoupled from the pattern of data and is instead use case specific.
 
-```
+```rust
 impl CheckingAccount for Transaction {
     fn transact(&mut self, other: dyn Transaction) {
         todo!("Implementation 1")
@@ -93,7 +93,7 @@ impl SavingsAccount for Transaction {
 ```
 
 Otherwise, if transaction implementations are consistent across Account types, then implementing `transact` on a single type would make more sense:
-```
+```rust
 impl BankAccount for Transaction {
     fn transact(&mut self, other: dyn Transaction) {
         todo!("Implementation 1")
@@ -105,13 +105,13 @@ impl BankAccount for Transaction {
 
 Let us say you are creating an API which is intedned to support multiple styles of request: GRPC and JsonRPC. GRPC can guarentee whether a field exists in a given Response because of its encoding format whereas Json cannot. In Json, any field we can expect can either exist, or it cannot but ultimately the expected Response object is the same.
 
-```
+```rust
 struct Response {}
 ```
 
 We can easily generate a GRPC specific response and a JsonRPC response using `compose_type!`
 
-```
+```rust
 compose_type! {
     struct GrpcResponse = Response;
     struct JsonResponse = Optional(Response);
