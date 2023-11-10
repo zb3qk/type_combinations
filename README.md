@@ -31,7 +31,7 @@ struct Example2 {
 4. Define structs within `compose_type!` to be used to compose new types
 5. Reference your new types outside of `compose_type!` and use them in your project
 
-6. ## When use this library
+## When use this library
 You should use `compose_type!` if:
     1. Your data model is utilized in multiple decoupled implementations
     2. Can be generated using clear patterns, coupled to existing data models
