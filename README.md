@@ -55,6 +55,9 @@ struct CheckingAccount {
 
 // (2)
 compose_type! {
+    struct BankAccount {
+        balance: i32
+    }
     struct SavingsAcccount = BankAccount;
 }
 
