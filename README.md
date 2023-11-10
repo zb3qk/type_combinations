@@ -50,7 +50,7 @@ to define the other account types, you have 2 choices: (1) define the `BankAccou
 ```rust
 // (1)
 struct CheckingAccount {
-    bankAccount: BankAccount
+    bank_account: BankAccount
 }
 
 // (2)
@@ -67,7 +67,7 @@ struct SavingsAccount {
 }
 ```
 
-Whether we choose (1) or (2) is based on the specification of our banking app. Let's add a `Transaction` trait. 
+Above, (2) gives the beneift of not having to access another layer of abstraction to get `BankAccount` data via `checking_account.bank_account.balance` and instead do `savings_account.balance`. Still though, whether we choose (1) or (2) is based on the specification of our banking app. Let's add a `Transaction` trait. 
 
 ```rust
 trait Transaction {
